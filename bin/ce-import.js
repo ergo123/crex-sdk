@@ -117,12 +117,10 @@ new Promise((resolve, reject) => {
 		program.compress.forEach((folder) => {
 			versionsUpdated = ver ? Object.assign({}, versionsUpdated, bump(folder, ver)) : {};
 
-			console.log('Zipping................', folder);
-
 			zip.glob(folder + '/**/*' , {
 				cwd: (folder.charAt(0) === '/') ? folder : process.cwd(),
 				dot: true,
-				ignore: [name, omit]
+				ignore: `**/${name},${omit}`
 			});
 		});
 
