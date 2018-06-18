@@ -120,7 +120,7 @@ new Promise((resolve, reject) => {
 			zip.glob(folder + '/**/*' , {
 				cwd: (folder.charAt(0) === '/') ? folder : process.cwd(),
 				dot: true,
-				ignore: omit
+				ignore: [name, omit]
 			});
 		});
 
