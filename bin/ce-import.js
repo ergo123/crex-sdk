@@ -154,11 +154,10 @@ new Promise((resolve, reject) => {
 
 	return fs.unlink('ce-import.zip', function (err) {
 		console.log('Unlinking ce-import.zip', err);
-		if (err) {
-			return;
-		}
+		return package;
 	});
-}).then(() => {
+}).then((package) => {
+	console.log('importRemovePackage');
 	return crex.importRemovePackage({
 		id: id
 	}).then(() => {
