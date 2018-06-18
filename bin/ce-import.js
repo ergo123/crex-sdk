@@ -152,13 +152,13 @@ new Promise((resolve, reject) => {
 }).then((package) => {
 	spinner.text = 'Cleaning up...';
 
-	fs.unlink('ce-import.zip', function(err){
+	return fs.unlink('ce-import.zip', function (err) {
 		console.log('Unlinking ce-import.zip', err);
 		if (err) {
 			return;
 		}
 	});
-
+}).then(() => {
 	return crex.importRemovePackage({
 		id: id
 	}).then(() => {
