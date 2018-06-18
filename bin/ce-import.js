@@ -105,10 +105,12 @@ new Promise((resolve, reject) => {
 		zip.pipe(output);
 
 		output.on('close', function() {
+			console.log('Stream closed...');
 			resolve();
 		});
 
 		zip.on('error', function(err) {
+			console.error('Zip error', err);
 			reject(err);
 		});
 
